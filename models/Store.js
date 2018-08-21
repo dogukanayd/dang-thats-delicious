@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise; 
-const slug = require('slugs');
+const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+const slug = require("slugs");
 
 const storeSchema = new mongoose.Schema({
     name: {
         type: String,
         trim: true,
-        required: 'Please enter a store name!'
+        required: "Please enter a store name!"
     },
     slug: String,
 
@@ -24,21 +24,24 @@ const storeSchema = new mongoose.Schema({
     location: {
         type: {
             type: String,
-            default: 'Poin'
+            default: "Poin"
         },
-        coordinates: [{
-            type: Number,
-            required: 'You must supply coordinates!'
-        }],
+        coordinates: [
+            {
+                type: Number,
+                required: "You must supply coordinates!"
+            }
+        ],
         address: {
             type: String,
-            required: 'You must supply an address!'
+            required: "You must supply an address!"
         }
-    }
+    },
+    photo: String
 });
 
-storeSchema.pre('save', function(next){
-    if(!this.isModified('name')){
+storeSchema.pre("save", function(next) {
+    if (!this.isModified("name")) {
         next(); //skip it
         return; // stop this function from runnig
     }
@@ -47,4 +50,4 @@ storeSchema.pre('save', function(next){
     //TODO: make more resiliant so slugs are unique
 });
 
-module.exports = mongoose.model('Store', storeSchema);
+module.exports = mongoose.model("Store", storeSchema);
