@@ -65,5 +65,5 @@ exports.updateAccount = async (req, res) => {
         { new: true, runValidators: true, context: "query" }
     );
     req.flash("success", "Updated the profile!");
-    res.redirect("back");
+    res.redirect("back"); // when you type back, its post the data and then coming back same page
 };
