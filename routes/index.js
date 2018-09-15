@@ -38,7 +38,6 @@ router.get("/register", userController.registerForm);
 // 3. we need to log them in
 router.post(
     "/register",
-    userController.validateRegister,
     // we need to know about errors if
     // validation will be passed, but registration
     // will be failed in some reasons, e.g. second
@@ -58,5 +57,11 @@ router.post(
     authController.confirmedPasswords,
     catchErrors(authController.update)
 );
+
+/*
+    API
+*/
+
+router.get("/api/search", catchErrors(storeController.searchStores));
 
 module.exports = router;
