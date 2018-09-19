@@ -38,11 +38,8 @@ router.get("/register", userController.registerForm);
 // 3. we need to log them in
 router.post(
     "/register",
-    // we need to know about errors if
-    // validation will be passed, but registration
-    // will be failed in some reasons, e.g. second
-    // registration with same email
-    catchErrors(userController.register),
+    userController.validateRegister,
+    userController.register,
     authController.login
 );
 

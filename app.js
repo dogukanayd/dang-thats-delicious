@@ -63,10 +63,10 @@ app.use((req, res, next) => {
 });
 
 // promisify some callback based APIs
-app.use((req, res, next) => {
-    req.login = promisify(req.login, req);
-    next();
-});
+// app.use((req, res, next) => {
+//     req.login = promisify(req.login, req);
+//     next();
+// });
 
 // After allllll that above middleware, we finally handle our own routes!
 app.use("/", routes);
